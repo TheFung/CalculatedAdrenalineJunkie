@@ -1,0 +1,142 @@
+{
+    "name": "playerMoveInput",
+    "maps": [
+        {
+            "name": "playerMovement",
+            "id": "148221b2-0025-4a2f-9d42-f1e1ec0a532e",
+            "actions": [
+                {
+                    "name": "moveForward",
+                    "type": "Button",
+                    "id": "21439880-3306-451c-b7d5-0af43e2ef9b1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "turnRight",
+                    "type": "Button",
+                    "id": "88dd1d20-f03f-46ee-8ebf-915cef88a0fe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "turnLeft",
+                    "type": "Button",
+                    "id": "230a342e-10ed-41ea-8d90-d302ae9e207b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "placeStart",
+                    "type": "Button",
+                    "id": "859a0dbb-b953-4854-81d8-749b40bedce4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "placeEnd",
+                    "type": "Button",
+                    "id": "3a0f803d-1dcc-48ec-a786-3be0b7d1e259",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9c3f81e8-cb49-47ea-9f3a-4c30668a001a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "moveForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a97c8b9e-b661-4d60-9c08-67515027aa4a",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "moveForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2dd6d837-24f1-4ac7-b0ff-c7ba8b3367bf",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "turnRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "065490d6-0aae-4d97-834b-d00e57467d51",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "turnRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e31be14-7ceb-4072-a1af-1fc3f42e8078",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "turnLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8807801-47e0-4f7c-a445-f616fc8b03e5",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "turnLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0a63f2c-797e-4008-b446-b554bd3aaa9d",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "Press(pressPoint=0.1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "placeStart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "291a82fe-db07-47bb-b9d6-25f4712ff5f4",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "Press(pressPoint=0.1,behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "placeEnd",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
