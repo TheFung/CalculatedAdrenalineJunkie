@@ -21,12 +21,7 @@ public class woobly_effect : MonoBehaviour
     private bool _isExploding = false;
     void Update()
     {
-        /*if (_isExploding)
-        {
-            _explotionTime += Time.deltaTime * distance;
-            _explotionEffekt = ExplotionCurve.Evaluate(Mathf.PingPong(Time.time,1f)) * distance;
-        } */
-       GetExplosiveData();
+        GetExplosiveData();
        {
            _explotionEffekt = _distanceFromExplotion * ExplotionCurve.Evaluate(Time.time);
            _timer += 1 * Time.deltaTime;
@@ -90,7 +85,7 @@ public class woobly_effect : MonoBehaviour
                 {
                     _isExploding = true;
                 }
-                print("This is the distance between" + t.gameObject.name + " and " + transform.parent.name + " : " + distance);
+                //print("This is the distance between" + t.gameObject.name + " and " + transform.parent.name + " : " + distance);
             }
         }
     }

@@ -15,6 +15,7 @@ namespace PlayerMK2
         [SerializeField] private GameObject wire;
         [SerializeField] private GameObject presurePlate;
         private bool firstPlace = true;
+        public Transform ex = null;
 
         private void Awake()
         {
@@ -25,8 +26,6 @@ namespace PlayerMK2
         private void Update()
         {
             if (placing && !_player._moving) posPreviusMove = transform.position;
- 
-            
         }
 
         public void PlaceWhenMove()
@@ -40,11 +39,12 @@ namespace PlayerMK2
             {
                 
                 //Instantiate(wire, new Vector3(Mathf.Round(transform.position.x) , Mathf.Round(transform.position.y), Mathf.Round(transform.position.z)), transform.rotation);
-                Instantiate(wire, (transform.position + transform.forward * -0.5f), transform.rotation, null);
+                Instantiate(wire, (transform.position + transform.forward * -0.5f), transform.rotation, ex);
             } 
             if (!firstPlace && !_player._moving && !placing) 
             { 
-                Instantiate(presurePlate, new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y) - 0.5f, Mathf.Round(transform.position.z)), new Quaternion(0, 0, 0, 0));
+                Instantiate(presurePlate, new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y) - 0.5f, Mathf.Round(transform.position.z))
+                    , new Quaternion(0, 0, 0, 0), ex);
                 firstPlace = true;
             }
         }
@@ -56,7 +56,6 @@ namespace PlayerMK2
         private void OnPlaceEnd()
         {
             placing = false;
-            
         }
     }
 }

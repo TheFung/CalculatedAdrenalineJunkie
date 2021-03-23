@@ -175,3 +175,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _player: {fileID: 7753124472365231687, guid: 0cadaab65d2345144b70972c5938bd68, type: 3}

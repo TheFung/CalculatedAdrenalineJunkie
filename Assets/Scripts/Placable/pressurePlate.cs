@@ -12,7 +12,7 @@ public class pressurePlate : MonoBehaviour
     private float closestDistanceSqr = Mathf.Infinity;
     private GameObject closestWire;
     private wire _wire;
-    private GameObject _explosive;
+    private Transform _explosive;
     private float timer;
     private void Update()
     {
@@ -22,29 +22,14 @@ public class pressurePlate : MonoBehaviour
             if (playerSearch.gameObject.CompareTag("Player") && timer >= 0.2f)
             {
                 print("deadasspressure plate down");
-                _wire.called();
-                //_explosive
-                Destroy(this, 0.2f);
+                _explosive.GetComponent<ExplosiveCharge>().calledByPressurePlate();
             }
         }
     }
-
-    private void Awake()
+    private void Start()
     {
-        foreach (var wire in Physics.OverlapBox(transform.position, Vector3.one * bulshitmcbuslshitgeeethisfuckereintworking, new Quaternion()))
-        {
-            if (wire.CompareTag("Wire"))
-            {
-                Vector3 directionToWire = wire.transform.position - transform.position;
-                float dSqrToTarget = directionToWire.sqrMagnitude;
-                if (dSqrToTarget <= enbotherlevelofbullshitcode) closestWire = wire.gameObject;
-            }
-        }
-        if (closestWire != null)
-        {
-            _wire = closestWire.GetComponent<wire>();
-            _explosive = _wire.explosiveConnected;
-        }
+        _explosive = transform.parent;
+        _explosive.GetComponent<ExplosiveCharge>().children.Add(transform);
     }
 
 }

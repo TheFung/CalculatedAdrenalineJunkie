@@ -31,10 +31,13 @@ namespace PlayerMK2
         [SerializeField] private float speedModifier;
         private RaycastHit hit;
         private bool somethingInfront;
+        private knockBack _knockBack;
+        public Vector3 eularAgnleBeforeLookAt;
         private void Start()
         {
             _placeExplosive = GetComponent<placeExplosive>();
             _controller = GetComponent<CharacterController>();
+            _knockBack = GetComponent<knockBack>();
         }
         private void Update()
         {
@@ -45,6 +48,7 @@ namespace PlayerMK2
             if (_rotationDirection != 0) rotate();
             
             _timer += Time.deltaTime * speedModifier;
+            if (_knockBack.blastingAway) _timer = 0;
             _moving = _timer <= 1f;
             if (!_moving)
             {
@@ -57,6 +61,7 @@ namespace PlayerMK2
         {
             if (!_moving && !somethingInfront)
             {
+                eularAgnleBeforeLookAt = transform.eulerAngles;
                 _placeExplosive.PlaceWhenMove();
                 startPos = transform.position;
                 _movingForward = true;

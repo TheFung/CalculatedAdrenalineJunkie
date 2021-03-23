@@ -93,7 +93,8 @@ GameObject:
   - component: {fileID: 8292845661193923716}
   - component: {fileID: 8292845661193923717}
   - component: {fileID: 8292845661193923714}
-  - component: {fileID: 8292845661193923715}
+  - component: {fileID: 7004674352243435923}
+  - component: {fileID: 1402642201067662757}
   m_Layer: 6
   m_Name: Wire
   m_TagString: Wire
@@ -178,7 +179,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8292845661193923715
+--- !u!114 &7004674352243435923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +188,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8292845661193923713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aca0d07d600969d4f8539ca3e23e793a, type: 3}
+  m_Script: {fileID: 11500000, guid: c74944215515a1840bc9e66fa0df0df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosiveConnected: {fileID: 0}
+--- !u!114 &1402642201067662757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8292845661193923713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee96ecbd47242648908020817ad71c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
