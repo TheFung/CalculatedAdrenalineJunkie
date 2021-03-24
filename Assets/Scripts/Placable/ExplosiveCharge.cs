@@ -33,7 +33,7 @@ public class ExplosiveCharge : MonoBehaviour
 
     public void calledByPressurePlate()
     {
-        ExplosiveChargeController._charges.Remove(transform);
+        
         _hasExploded = true;
         _knockBack = _player.transform.GetComponent<knockBack>();
         _knockBack.KnockBack(gameObject.transform);
@@ -41,7 +41,9 @@ public class ExplosiveCharge : MonoBehaviour
         {
             child.GetComponent<selfDestruck>().SelfDestroy();
         }
-        Destroy(this, 0.2f);*/
+        */
         print("boom!");
+        //ExplosiveChargeController._charges.Remove(transform);
+        Destroy(gameObject, 0.2f);
     }
 }

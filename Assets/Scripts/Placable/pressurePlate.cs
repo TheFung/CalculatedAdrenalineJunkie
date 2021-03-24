@@ -22,6 +22,7 @@ public class pressurePlate : MonoBehaviour
             if (playerSearch.gameObject.CompareTag("Player") && timer >= 0.2f)
             {
                 print("deadasspressure plate down");
+                if (_explosive.GetComponent<ExplosiveCharge>() == null) return;
                 _explosive.GetComponent<ExplosiveCharge>().calledByPressurePlate();
             }
         }

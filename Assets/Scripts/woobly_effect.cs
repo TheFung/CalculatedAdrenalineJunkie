@@ -13,20 +13,19 @@ public class woobly_effect : MonoBehaviour
     public bool canrun = false;
     private float _timer = 0f;
     private float _distanceFromExplotion;
-    private float _explotionTime = 0f;
+    private float _explotionTime = 2f;
     private float _explotionEffekt;
     private bool _curentlyExploding;
     private bool _hasFormed = false;
     public int i;
     private bool _isExploding = false;
+    public float distance;
     void Update()
     {
+        _explotionEffekt = ExplotionCurve.Evaluate(_explotionTime);
+        _timer += 1 * Time.deltaTime;
         GetExplosiveData();
-       {
-           _explotionEffekt = _distanceFromExplotion * ExplotionCurve.Evaluate(Time.time);
-           _timer += 1 * Time.deltaTime;
-       }
-       if (!_hasFormed)
+        if (!_hasFormed)
         {
             AnimateTheCurves(scaleCurveInn);
             i = Random.Range(0, 1);
@@ -55,37 +54,33 @@ public class woobly_effect : MonoBehaviour
             transform.localScale = Vector3.one;
         }
 
-        if (_distanceFromExplotion > 0f && _curentlyExploding)
+        if (_isExploding)
         {
-            _explotionTime = 2f;
-            _curentlyExploding = false;
+            _explotionTime = 0f;
+            print("I exploded in woobly");
+            _isExploding = false;
         }
-
-        if (_distanceFromExplotion == 0f) _curentlyExploding = true;
     }
     private void FixedUpdate()
     {
-        if (_distanceFromExplotion > 0f) _explotionTime -= 0.02f;
+        if(_explotionTime < 2) _explotionTime += 0.2f;
     }
     private void AnimateTheCurves(AnimationCurve curve)
     {
         transform.localScale = Vector3.one * (curve.Evaluate(_timer) + _explotionEffekt);
     }
 
-    public float distance;
-    
+
+
     private void GetExplosiveData()
     {
         foreach (var t in ExplosiveChargeController._charges)
         {
+            if (t == null) return;
             if (t.GetComponent<ExplosiveCharge>()._hasExploded)
             {
                 distance = Vector3.Distance(transform.parent.position, t.transform.position);
-                if (distance > minDistanceFromExplotion)
-                {
-                    _isExploding = true;
-                }
-                //print("This is the distance between" + t.gameObject.name + " and " + transform.parent.name + " : " + distance);
+                if (distance < minDistanceFromExplotion && _explotionTime >= 2f) _isExploding = true;
             }
         }
     }
