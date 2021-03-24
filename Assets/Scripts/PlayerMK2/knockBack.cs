@@ -28,6 +28,7 @@ namespace PlayerMK2
         private PlayerMK2 _playerMk2;
         private Vector3 closestBlock;
         private int IntAway;
+        private bool CollidedMidAir;
 
         [SerializeField] float maxDistance;
         public bool collided = false;
@@ -74,7 +75,7 @@ namespace PlayerMK2
             closestBlock = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
             if (blastingAway)
             {
-                if(collided) print("I collided with circle cast");
+                CollidedMidAir = (collided && timer >= 0.1f);
                 print(_playerMk2._moving);
                 if(!collided) timer += Time.deltaTime * 6;
                 lenghtSmoothDamp = Vector3.SmoothDamp(transform.position, new Vector3(landingLocation.x, transform.position.y, landingLocation.z), ref velocity, airTime * _times[IntAway]);
@@ -82,7 +83,7 @@ namespace PlayerMK2
                 transform.position = move;
             
             
-                if (collided || closestBlock.x == landingLocation.x && closestBlock.z == landingLocation.z)
+                if (CollidedMidAir  || closestBlock.x == landingLocation.x && closestBlock.z == landingLocation.z)
                 {
                     print("i collided");
                     transform.LookAt(null);

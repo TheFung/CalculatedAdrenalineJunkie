@@ -15,14 +15,13 @@ public class detector : MonoBehaviour
         collitionRangeList = new List<Transform>();
     }
 
-    private void OnTriggerEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Player") || collision.transform.CompareTag("Wire")) return;
         print(collision.transform.name + "I collided with");
         collitionRangeList.Add(collision.transform);
     }
-
-    private void OnTriggerExit(Collision collision) => collitionRangeList.Remove(collision.transform);
+    private void OnCollisionExit(Collision collision) => collitionRangeList.Remove(collision.transform);
     private void Update()
     {
         _knockBack.collided = collitionRangeList.Count != 0;
