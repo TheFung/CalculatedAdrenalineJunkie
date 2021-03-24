@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
@@ -29,6 +30,8 @@ namespace PlayerMK2
         private Vector3 closestBlock;
         private int IntAway;
         private bool CollidedMidAir;
+        private bool resetTimer;
+        [SerializeField] private float multiplyer;
 
         [SerializeField] float maxDistance;
         public bool collided = false;
@@ -68,8 +71,14 @@ namespace PlayerMK2
             {
                 blastingAway = true;
                 _playerMk2._moving = true;
-                timer = 0;
                 blasting = false;
+                resetTimer = true;
+            }
+
+            if (resetTimer)
+            {
+                timer = 0;
+                resetTimer = false;
             }
 
             closestBlock = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
@@ -79,8 +88,10 @@ namespace PlayerMK2
                 print(_playerMk2._moving);
                 if(!collided) timer += Time.deltaTime * 6;
                 lenghtSmoothDamp = Vector3.SmoothDamp(transform.position, new Vector3(landingLocation.x, transform.position.y, landingLocation.z), ref velocity, airTime * _times[IntAway]);
+                var distanceAway = Vector3.Distance(transform.position, landingLocation);
                 var move = new Vector3(lenghtSmoothDamp.x, posAtBlast.y + _curves[IntAway].Evaluate(timer), lenghtSmoothDamp.z);
                 transform.position = move;
+                print(timer + "Timer for jum asdasdasdasdasdasdasdasdasdasdasdas");
             
             
                 if (CollidedMidAir  || closestBlock.x == landingLocation.x && closestBlock.z == landingLocation.z)
