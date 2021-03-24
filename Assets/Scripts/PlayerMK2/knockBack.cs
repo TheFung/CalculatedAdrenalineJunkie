@@ -30,7 +30,7 @@ namespace PlayerMK2
         private int IntAway;
 
         [SerializeField] float maxDistance;
-        private bool collided;
+        public bool collided = false;
         
         void Start()
         {
@@ -63,8 +63,6 @@ namespace PlayerMK2
         }
         private void Update()
         {
-            
-
             if (!_playerMk2._moving && blasting)
             {
                 blastingAway = true;
@@ -76,7 +74,6 @@ namespace PlayerMK2
             closestBlock = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
             if (blastingAway)
             {
-                collided = Physics.CapsuleCast(transform.position, transform.position, 0.6f, Vector3.one) && timer >= 0.25f;
                 if(collided) print("I collided with circle cast");
                 print(_playerMk2._moving);
                 if(!collided) timer += Time.deltaTime * 6;
